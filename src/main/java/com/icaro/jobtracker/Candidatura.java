@@ -1,5 +1,6 @@
 package com.icaro.jobtracker;
 
+import jakarta.validation.constraints.NotBlank;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -11,7 +12,9 @@ import java.time.LocalDate;
 // @Entity diz ao JPA: "esta classe representa uma tabela do banco de dados".
 // Cada objeto Candidatura vira uma linha da tabela, e cada atributo vira uma coluna.
 @Entity
+
 public class Candidatura {
+
 
     // @Id marca este campo como a chave primária (o identificador único da linha).
     // @GeneratedValue faz o banco criar o número sozinho (1, 2, 3...), então você não precisa informar.
@@ -19,13 +22,25 @@ public class Candidatura {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+
+
     // Atributos simples: viram colunas de texto na tabela.
+    @NotBlank(message = "A empresa é obrigatória")
     private String empresa;
+
+    @NotBlank(message = "A Vaga é obrigatória")
     private String vaga;
+
     private String link;
+
+
+
+
+
 
     // @Enumerated(EnumType.STRING) guarda o status como texto ("ENVIADA") no banco,
     // em vez de um número. Assim o dado continua legível, mesmo se a ordem do enum mudar.
+
     // Todo novo cadastro começa como ENVIADA.
     @Enumerated(EnumType.STRING)
     private Status status = Status.ENVIADA;
