@@ -25,14 +25,14 @@ public class CandidaturaControllerTest {
 
 
     @Test
-    public void listarCandidaturas() throws Exception{
+    public void develistarCandidaturas() throws Exception{
         mockMvc.perform(get("/candidaturas")).andExpect(status().isOk());
     }
 
 
 
     @Test
-    public void testeErro() throws Exception{
+    public void naoDeveEncontrarIdInexistente() throws Exception{
         mockMvc.perform(get("/candidaturas/9999")).andExpect(status().isNotFound());
     }
 
