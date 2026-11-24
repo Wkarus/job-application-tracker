@@ -1,5 +1,7 @@
 # Job Application Tracker
 
+![CI](https://github.com/Wkarus/job-application-tracker/actions/workflows/ci.yml/badge.svg)
+
 REST API to track job applications, built with Java and Spring Boot.
 *API REST para acompanhar candidaturas a vagas, feita com Java e Spring Boot.*
 
