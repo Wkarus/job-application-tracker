@@ -18,7 +18,8 @@ REST API to track job applications, built with Java and Spring Boot.
 
 - Java 21
 - Spring Boot 4 (Web, Data JPA, Validation)
-- H2 in-memory database (PostgreSQL planned)
+- - PostgreSQL 17 (Docker Compose); H2 in-memory for tests
+- Docker
 - Maven
 
 ## Running locally / Como rodar
