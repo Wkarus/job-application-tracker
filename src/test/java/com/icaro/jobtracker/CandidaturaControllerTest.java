@@ -1,5 +1,6 @@
 package com.icaro.jobtracker;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -7,13 +8,14 @@ import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
-
-import java.util.concurrent.ExecutionException;
-
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-@WithMockUser
+
+
+
+
+@WithMockUser(username = "teste@teste.com")
 @SpringBootTest   // sobe o contexto do Spring para o teste (igual à aplicação, mas sem porta de rede).
 @AutoConfigureMockMvc //cria o MockMvc para você usar.
 public class CandidaturaControllerTest {
@@ -21,9 +23,21 @@ public class CandidaturaControllerTest {
     private MockMvc mockMvc;
 
 
+    @Autowired
+    private UsuarioRepository usuarioRepository;
+
+
+    @BeforeEach
+    public void criarUsuario() {
+        if (!usuarioRepository.existsByEmail("teste@teste.com")) {
+            Usuario usuario = new Usuario();
+            usuario.setEmail("teste@teste.com");
+            usuario.setSenha("x");
+            usuarioRepository.save(usuario);
+        }
+    }
     //O throws Exception existe porque o perform pode lançar erro,
     // e o teste só precisa deixar o erro subir (o JUnit marca o teste como falho).
-
 
     @Test
     public void develistarCandidaturas() throws Exception{

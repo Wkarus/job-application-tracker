@@ -1,5 +1,6 @@
 package com.icaro.jobtracker;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 
@@ -18,7 +19,9 @@ public class Candidatura {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     // Atributos simples: viram colunas de texto na tabela.
     @NotBlank(message = "A empresa é obrigatória")
@@ -29,6 +32,8 @@ public class Candidatura {
 
     private String link;
 
+
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "usuario_id")
     private Usuario usuario;

@@ -1,6 +1,8 @@
 package com.icaro.jobtracker;
 
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 // O repository é a camada que conversa com o banco de dados.
@@ -12,6 +14,10 @@ public interface CandidaturaRepository extends JpaRepository<Candidatura, Long> 
 
     // O nome do método vira a consulta: "busque (find) por (By) status".
     // O Spring gera o SQL sozinho: select ... where status = ?
-    List<Candidatura> findByStatus(Status status);
+    List<Candidatura> findByStatusAndUsuarioEmail(Status status,String email);
+
+    List<Candidatura> findByUsuarioEmail(String email);
+
+    Optional<Candidatura> findByIdAndUsuarioEmail(Long id,String email);
 
 }
