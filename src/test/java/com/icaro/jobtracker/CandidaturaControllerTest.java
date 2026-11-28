@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;
 import org.springframework.http.MediaType;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.concurrent.ExecutionException;
@@ -12,7 +13,7 @@ import java.util.concurrent.ExecutionException;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
+@WithMockUser
 @SpringBootTest   // sobe o contexto do Spring para o teste (igual à aplicação, mas sem porta de rede).
 @AutoConfigureMockMvc //cria o MockMvc para você usar.
 public class CandidaturaControllerTest {
