@@ -51,9 +51,9 @@ curl -X POST http://localhost:8080/candidaturas \
 ## Roadmap
 
 - [x] CRUD and validation
-- [ ] Automated tests (JUnit) and CI with GitHub Actions
-- [ ] PostgreSQL with Docker Compose
-- [ ] Login with Spring Security and deployment
+- [x] Automated tests (JUnit) and CI with GitHub Actions
+- [x] PostgreSQL with Docker Compose
+- [x] Login with Spring Security and deployment
 - [ ] Funnel metrics and follow-up reminders
 - [ ] Simple React front end
 
